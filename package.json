@@ -1,0 +1,54 @@
+{
+	"name": "vb-logger",
+	"version": "0.0.0",
+	"description": "My simple console winston logger with typescript",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"start": "nodemon src/index.ts",
+		"dev": "nodemon src/index.ts",
+		"clean": "rmdir dist /S /Q",
+		"build": "tsc",
+		"prepare": "npm run build",
+		"refresh": "rm -rf ./node-modules ./package-lock.json && npm install",
+		"prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
+		"tdocs": "typedoc --out ./typedocs --exclude **/node_modules/**  ./src --readme ./README.md",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Vladimirbr/vb-logger.git"
+	},
+	"author": "Vladimir Brum",
+	"keywords": [
+		"winston",
+		"logger",
+		"typescript",
+		"log",
+		"logging",
+		"logs",
+		"loglevel"
+	],
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Vladimirbr/vb-logger/issues"
+	},
+	"homepage": "https://github.com/Vladimirbr/vb-logger#readme",
+	"dependencies": {
+		"winston": "^3.3.3"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15",
+		"prettier": "^2.4.1",
+		"ts-node": "^10.4.0",
+		"typedoc": "^0.22.8",
+		"typescript": "^4.4.4"
+	},
+	"engines": {
+		"node": ">=14.16.0",
+		"npm": ">=7.6.3"
+	}
+}
