@@ -13,14 +13,10 @@
 		"clean": "rmdir dist /S /Q",
 		"build": "tsc",
 		"prepare": "npm run build",
-		"preversion": "npm run lint",
-		"postversion": "git push && git push --tags",
 		"version": "npm run format && git add -A src",
-		"prepublishOnly": "npm test && npm run lint",
 		"refresh": "rm -rf ./node-modules ./package-lock.json && npm install",
 		"format": "prettier --write \"src/**/*.ts\"",
-		"tdocs": "typedoc --out ./typedocs --exclude **/node_modules/**  ./src --readme ./README.md",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"tdocs": "typedoc --out ./typedocs --exclude **/node_modules/**  ./src --readme ./README.md"
 	},
 	"repository": {
 		"type": "git",
