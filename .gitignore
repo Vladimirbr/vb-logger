@@ -127,3 +127,4 @@ files/googleapiservicejson.json
 .npmrc
 package-lock.json
 
+/dist
