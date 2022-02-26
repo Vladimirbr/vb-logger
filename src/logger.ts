@@ -11,11 +11,13 @@ import { IConfig } from './interfaces/config';
  * @class Logger - representing a logger, implement log interface
  *
  * {@link ILog}
+ * {@link IConfig}
  *
  */
 class Logger implements ILog {
 	/** The logger instance
 	 *
+	 * @readonly
 	 * @private winston logger instance
 	 */
 	private readonly logger: winston.Logger;
@@ -26,7 +28,7 @@ class Logger implements ILog {
 	 * @param loggerConfig - The logger configurations
 	 *
 	 */
-	constructor({ loggerConfig }: { loggerConfig: IConfig }) {
+	constructor(loggerConfig: IConfig) {
 		this.logger = createLogger({
 			level: loggerConfig.MIN_LEVEL_CONSOLE,
 			exitOnError: loggerConfig.EXIT_ON_ERROR,
@@ -56,7 +58,7 @@ class Logger implements ILog {
 	 *  logger.debug('my debug msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public debug(msg: string, ...data: any[]): void {
@@ -73,7 +75,7 @@ class Logger implements ILog {
 	 *  logger.debug('my error msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public error(msg: string, ...data: any[]): void {
@@ -90,7 +92,7 @@ class Logger implements ILog {
 	 *  logger.debug('my http msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public http(msg: string, ...data: any[]): void {
@@ -107,7 +109,7 @@ class Logger implements ILog {
 	 *  logger.debug('my info msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public info(msg: string, ...data: any[]): void {
@@ -124,7 +126,7 @@ class Logger implements ILog {
 	 *  logger.debug('my silly msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public silly(msg: string, ...data: any[]): void {
@@ -141,7 +143,7 @@ class Logger implements ILog {
 	 *  logger.debug('my verbose msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public verbose(msg: string, ...data: any[]): void {
@@ -158,7 +160,7 @@ class Logger implements ILog {
 	 *  logger.debug('my warning msg', {})
 	 *  ```
 	 *
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	public warn(msg: string, ...data: any[]): void {
@@ -170,7 +172,7 @@ class Logger implements ILog {
 	 *
 	 * @private
 	 * @param msgType - The logger level
-	 * @param msg - The log message
+	 * @param msg:string - The log message
 	 * @param data - The additional log data for print, json in most cases
 	 */
 	private emitLofMessage(msgType: string, msg: string, data: any[]) {
