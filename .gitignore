@@ -122,9 +122,8 @@ dist
 .vscode
 coverage/
 typedocs/
-files/googleapiservicejson.json
 
 .npmrc
 package-lock.json
-
+tsconfig.tsbuildinfo
 /dist

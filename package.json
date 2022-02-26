@@ -2,21 +2,32 @@
 	"name": "vb-logger",
 	"version": "0.0.0",
 	"description": "My simple console winston logger with typescript",
-	"main": "dist/index.js",
+	"main": "dist/cjs/index.js",
+	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"files": [
-		"dist/**/*"
+		"dist",
+		"LICENSE",
+		"README.md"
 	],
 	"scripts": {
-		"start": "nodemon src/index.ts",
-		"dev": "nodemon src/index.ts",
 		"clean": "rmdir dist /S /Q",
-		"build": "tsc",
+		"build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+		"build:check": "tsc --noEmit",
 		"prepare": "npm run build",
+		"prepublishOnly": "npm test && npm run lint",
+		"preversion": "npm run lint",
 		"version": "npm run format && git add -A src",
+		"postversion" : "git push && git push --tags",
 		"refresh": "rm -rf ./node-modules ./package-lock.json && npm install",
-		"format": "prettier --write \"src/**/*.ts\"",
-		"tdocs": "typedoc --out ./typedocs --exclude **/node_modules/**  ./src --readme ./README.md"
+		"format": "prettier --config --write \"src/**/*.ts\"",
+		"lint": "eslint . --ext .ts",
+		"lint:write": "eslint . --fix --ext .ts",
+		"tdocs": "typedoc --out ./typedocs --exclude **/node_modules/**  ./src --readme ./README.md --name Logger",
+		"test": "echo \"Error: no test specified\" && exit 0"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"repository": {
 		"type": "git",
@@ -41,10 +52,26 @@
 		"winston": "^3.6.0"
 	},
 	"devDependencies": {
+		"@types/jest": "^27.4.1",
+		"@types/node": "^17.0.21",
+		"@typescript-eslint/eslint-plugin": "^5.12.1",
+		"@typescript-eslint/parser": "^5.12.1",
+		"eslint": "^8.10.0",
+		"eslint-config-prettier": "^8.4.0",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-jest": "^26.1.1",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-promise": "^6.0.0",
+		"eslint-plugin-security": "^1.4.0",
+		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"eslint-plugin-tsdoc": "^0.2.14",
+		"jest": "^27.5.1",
 		"nodemon": "^2.0.15",
 		"prettier": "^2.5.1",
 		"ts-node": "^10.5.0",
-		"typedoc": "^0.22.11",
+		"typedoc": "^0.22.12",
 		"typescript": "^4.5.5"
 	},
 	"engines": {
