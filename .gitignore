@@ -126,4 +126,4 @@ typedocs/
 .npmrc
 package-lock.json
 tsconfig.tsbuildinfo
-/dist
+

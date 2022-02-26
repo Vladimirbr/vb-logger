@@ -1,6 +1,6 @@
 {
 	"name": "vb-logger",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "My simple console winston logger with typescript",
 	"main": "dist/cjs/index.js",
 	"module": "dist/index.js",
@@ -18,7 +18,7 @@
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",
 		"version": "npm run format && git add -A src",
-		"postversion" : "git push && git push --tags",
+		"postversion": "git push && git push --tags",
 		"refresh": "rm -rf ./node-modules ./package-lock.json && npm install",
 		"format": "prettier --config --write \"src/**/*.ts\"",
 		"lint": "eslint . --ext .ts",
